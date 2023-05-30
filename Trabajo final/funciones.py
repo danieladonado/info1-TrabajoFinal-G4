@@ -80,7 +80,6 @@ def validacionCadenas(x):
                 continue
     return x
 
-     
 
 
 ## funciones CRUD

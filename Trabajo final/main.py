@@ -11,6 +11,18 @@ from funciones import rango1_a
 from funciones import validacionFlotantes
 from funciones import validacionCadenas
 
+from funciones import crearEquipo
+from funciones import leerEquipo
+from funciones import actualizarEquipo
+from funciones import borrarEquipo
+from funciones import crearResponsable
+from funciones import leerResponsable
+from funciones import actualizarResponsable
+from funciones import borrarResponsable
+from funciones import crearUbicacion
+from funciones import leerUbicacion
+from funciones import actualizarUbicacion
+from funciones import borrarUbicacion
 
 ### Conexión con la base de datos llamada informatica1
 import pymongo
