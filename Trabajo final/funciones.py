@@ -85,3 +85,50 @@ def validacionCadenas(x):
 
 ## funciones CRUD
 
+from main import client
+
+# Funciones CRUD para la colección "equipos"
+def crearEquipo(equipo):
+    """"""
+    client.equipos.insert_one(equipo)
+
+def leerEquipo(serial):
+    
+    return client.equipos.find_one({'serial': serial})
+
+def actualizarEquipo(serial, actualizacion):
+    
+    client.equipos.update_one({'serial': serial}, {'$set': actualizacion})
+
+def borrarEquipo(serial):
+    
+    client.equipos.delete_one({'serial': serial})
+
+
+# Funciones CRUD para la colección "responsables"
+def crearResponsable(responsable):
+    client.responsables.insert_one(responsable)
+
+def leerResponsable(codigo):
+    return client.responsables.find_one({'codigo': codigo})
+
+def actualizarResponsable(codigo, updates):
+    client.responsables.update_one({'codigo': codigo}, {'$set': updates})
+
+def borrarResponsable(codigo):
+    client.responsables.delete_one({'codigo': codigo})
+
+
+# Funciones CRUD para la colección "ubicaciones"
+def crearUbicacion(ubicacion):
+    client.ubicaciones.insert_one(ubicacion)
+
+def leerUbicacion(codigo):
+    return client.ubicaciones.find_one({'codigo': codigo})
+
+def actualizarUbicacion(codigo, updates):
+    client.ubicaciones.update_one({'codigo': codigo}, {'$set': updates})
+
+def borrarUbicacion(codigo):
+    client.ubicaciones.delete_one({'codigo': codigo})
+    

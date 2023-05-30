@@ -10,6 +10,9 @@ from funciones import validacionEnteros
 from funciones import rango1_a
 from funciones import validacionFlotantes
 from funciones import validacionCadenas
+
+
+### Conexión con la base de datos llamada informatica1
 import pymongo
 
 uri = "mongodb+srv://informatica1:bio123@cluster0.hj2pgzi.mongodb.net/?retryWrites=true&w=majority"
