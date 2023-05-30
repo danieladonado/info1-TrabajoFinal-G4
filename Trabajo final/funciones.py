@@ -89,46 +89,141 @@ from main import client
 
 # Funciones CRUD para la colección "equipos"
 def crearEquipo(equipo):
-    """"""
+    """
+    Inserta un diccionario con la información de un equipo
+    en la colección de la base de datos
+    
+    Args:
+        equipo (_type_): diccionario que representa un equipo
+    """
     client.equipos.insert_one(equipo)
 
+
 def leerEquipo(serial):
+    """
+    la función busca el parámetro en la colección y
+    lo retorna si es encontrado
+
+    Args:
+        serial (_type_): numero de serie
+
+    Returns:
+        _type_: elemento buscado
+    """
+    if client.equipos.find_one({'serial': serial}) is None:
+        print(f"No se encontró ningún equipo con el serial {serial}.")
     
-    return client.equipos.find_one({'serial': serial})
+    else:
+        return client.equipos.find_one({'serial': serial})
+
 
 def actualizarEquipo(serial, actualizacion):
-    
+    """La función actualiza un equipo guardado en la base de datos
+
+    Args:
+        serial (_type_): numero de serie del elemento en la base de datos
+        actualizacion (_type_): elemento que reemplazará el anterior
+    """
     client.equipos.update_one({'serial': serial}, {'$set': actualizacion})
 
+
 def borrarEquipo(serial):
-    
+    """La función borra un equipo en la base de datos
+
+    Args:
+        serial (_type_): número de serie del equipo a borrar
+    """
     client.equipos.delete_one({'serial': serial})
 
 
 # Funciones CRUD para la colección "responsables"
 def crearResponsable(responsable):
+    """La función guarda un diccionario con un nuevo repsonsable
+    en la base de datos
+
+    Args:
+        responsable (_type_): nuevo diccionario
+    """
     client.responsables.insert_one(responsable)
 
+
 def leerResponsable(codigo):
-    return client.responsables.find_one({'codigo': codigo})
+    """la función busca un código en la base de datos y
+    muestra su información
+
+    Args:
+        codigo (_type_): codigo a buscar
+
+    Returns:
+        _type_: información del código buscado
+    """
+    if client.responsables.find_one({'codigo': codigo}) is None:
+        print(f"No se encontró ningún responsable con el código {codigo}.")
+    else:
+        return client.responsables.find_one({'codigo': codigo})
+
 
 def actualizarResponsable(codigo, updates):
+    """La función actualiza un responsable en la base de datos
+
+    Args:
+        codigo (_type_): codigo del responsable
+        updates (_type_): dato que reemplazará el anterior
+    """
     client.responsables.update_one({'codigo': codigo}, {'$set': updates})
 
+
 def borrarResponsable(codigo):
+    """La función elimina un responsable de la base d edatos
+
+    Args:
+        codigo (_type_): codigo del responsable a eliminar
+    """
     client.responsables.delete_one({'codigo': codigo})
 
 
 # Funciones CRUD para la colección "ubicaciones"
 def crearUbicacion(ubicacion):
+    """La función añade una nueva ubicación a la colección indicada
+    en la base de datos
+
+    Args:
+        ubicacion (_type_): diccionario con nueva ubicacion
+    """
     client.ubicaciones.insert_one(ubicacion)
 
+
 def leerUbicacion(codigo):
-    return client.ubicaciones.find_one({'codigo': codigo})
+    """La función busca una ubicación en la base de datos
+
+    Args:
+        codigo (_type_): codigo de la ubicacion a buscar
+
+    Returns:
+        _type_: información de la ubicación encontrada
+    """
+    if client.ubicaciones.find_one({'codigo': codigo}) is None:
+        print(f"No se encontró ningún equipo con el serial {codigo}.")
+    
+    else:
+        return client.ubicaciones.find_one({'codigo': codigo})
+
 
 def actualizarUbicacion(codigo, updates):
+    """La función actualiza una ubicacion en la base de datos
+
+    Args:
+        codigo (_type_): codigo de la ubicacion en la base de datos
+        updates (_type_): informacion que reemplazara la anterior
+    """
     client.ubicaciones.update_one({'codigo': codigo}, {'$set': updates})
 
+
 def borrarUbicacion(codigo):
+    """La función elimina un responsable de la base d edatos
+
+    Args:
+        codigo (_type_): codigo del elemento a eliminar
+    """
     client.ubicaciones.delete_one({'codigo': codigo})
     
