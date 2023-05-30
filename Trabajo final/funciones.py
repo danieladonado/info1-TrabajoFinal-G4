@@ -1,3 +1,5 @@
+import pymongo
+
 ## funciones de validación
 
 
@@ -84,7 +86,11 @@ def validacionCadenas(x):
 
 ## funciones CRUD
 
-from main import client
+uri = "mongodb+srv://informatica1:bio123@cluster0.hj2pgzi.mongodb.net/?retryWrites=true&w=majority"
+
+# Crear cliente que se conecte al servidor
+client = pymongo.MongoClient(uri)
+
 
 # Funciones CRUD para la colección "equipos"
 def crearEquipo(equipo):
