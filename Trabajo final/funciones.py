@@ -122,14 +122,37 @@ def leerEquipo(serial,datEquipos):
         return client.equipos.find_one({'serial': serial})
 
 
-def actualizarEquipo(serial, actualizacion):
+def actualizarEquipo(numero_activo, coleccion):
     """La función actualiza un equipo guardado en la base de datos
 
-    Args:
-        serial (_type_): numero de serie del elemento en la base de datos
-        actualizacion (_type_): elemento que reemplazará el anterior
     """
-    client.equipos.update_one({'serial': serial}, {'$set': actualizacion})
+    # Buscar el documento por el número de activo
+    documento = coleccion.find_one({"numero de activo": numero_activo})
+    
+    # Verificar si se encontró algún documento
+    if documento is None:
+        print("No se encontró ningún documento con ese número de activo")
+        return
+    
+    # Crear un diccionario para almacenar los cambios
+    cambios = {}
+    
+    # Pedir al usuario que ingrese nuevos valores para cada campo
+    for campo, valor in documento.items():
+        # No actualizar el campo _id
+        if campo == "_id":
+            continue
+        
+        nuevo_valor = input(f"Ingrese un nuevo valor para el campo '{campo}' (valor actual: {valor}): ")
+        
+        # Si el usuario ingresó un valor, actualizar el campo
+        if nuevo_valor != "":
+            cambios[campo] = nuevo_valor
+    
+    # Actualizar el documento con los cambios
+    coleccion.update_one({"numero de activo": numero_activo}, {"$set": cambios})
+    
+    print("Documento actualizado correctamente")
 
 
 def borrarEquipo(serial):

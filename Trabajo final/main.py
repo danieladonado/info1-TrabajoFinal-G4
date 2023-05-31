@@ -154,24 +154,11 @@ while True:
                     continue
                 
             if equipo == 3:
-                """Sección que actualiza un equipo con base en su número activo
-                """
-                # El valor del campo "numero_activo" que estás buscando
-                numero_activo = input("Ingrese el valor del número activo a buscar: ")
+                numeroAc = input("Ingrese el número de activo a buscar: ")
+                numeroAc = validacionEnteros(numeroAc)
                 
-                # Los cambios que deseas realizar en el documento
-                
-                cambios = {"$set": {"campo1": "nuevo_valor1", "campo2": "nuevo_valor2"}}
-
-                # Actualizar el documento
-                result = datEquipos.update_one({"numero_activo": numero_activo}, cambios)
-
-                # Verificar si se actualizó algún documento
-                if result.matched_count > 0:
-                    print(f"Se actualizó {result.modified_count} documento(s)")
-                else:
-                    print("No se encontró ningún documento con ese número activo")
-                    
+                actualizarEquipo(numeroAc,datEquipos)
+                print()    
                     
             if equipo == 4:
                 pass
