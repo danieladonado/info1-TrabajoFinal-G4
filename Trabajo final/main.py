@@ -4,7 +4,7 @@
 -Diego Alejandro Jaramillo Arroyave
 
 """
-
+import csv
 from funciones import validacionNum
 from funciones import validacionEnteros
 from funciones import rango1_a
@@ -101,7 +101,44 @@ while True:
                 print("\nEquipo guardado adecuadamente\n")
                              
             if equipo == 2:
-                pass
+                """Sección de adición de equipo de forma automática
+                """
+                confirmar = input("Ingrese '1' para confirmar el ingreso de información automática desde el archivo, o '2' para regresar al menú: ")
+                confirmar = validacionEnteros(confirmar)
+                confirmar = rango1_a(confirmar,2)
+                
+                if confirmar == 1:
+                    with open("inventarioIPS.csv", newline="", encoding="utf-8") as csvfile:
+                        reader = csv.reader(csvfile, delimiter=";")
+                        # Obtener los nombres de las columnas de la primera fila
+                        header = next(reader)
+                        # Obtener los índices de las columnas específicas
+                        name_index = header.index("NOMBRE")
+                        marca_index = header.index("MARCA")
+                        ubicacion_index = header.index("SEDE")
+                        serial_index = header.index("SERIE")
+                        
+                        for row in reader:
+                            # Acceder a los datos de columnas específicas utilizando los índices
+                            name = row[name_index]
+                            brand = row[marca_index]
+                            location = row[ubicacion_index]
+                            
+                            # Hacer algo con los datos extraídos
+                            
+                            #generar números aleatorios
+                            import random
+                            for i in range(3):
+                                num_digits = 5
+                                digits = [str(random.randint(0, 9)) for _ in range(num_digits)]
+                                random_number = int(''.join(digits))
+
+                            
+                            print(f"Nombre: {name}, Marca: {brand}, Sede: {location}")
+                    
+                elif confirmar ==2:
+                    continue
+                
             if equipo == 3:
                 pass
             if equipo == 4:
