@@ -37,7 +37,7 @@ db = client.test
 mydb = client["informatica1"]
 datEquipos = mydb["equiposData"]
 datRespon = mydb["responsablesData"]
-datRespon = mydb["ubicacionesData"]
+datUbi = mydb["ubicacionesData"]
 
 # Send a ping to confirm a successful connection
 try:
@@ -153,7 +153,27 @@ while True:
             break
 
     if menu == 2:
-        pass
+        while True:
+            responsable = input(
+            "\n\nMenú de responsables\n\n 1. Ingresar responsable.\n 2. Actualizar responsable.\n 3. Buscar responsable.\n 4. Ver todos los responsables.\n 5. Eliminar responsable.\n 6. Volver al menú principal.\n\nIngrese una opción: "
+            )
+            responsable = validacionEnteros(responsable)
+            responsable = rango1_a(responsable, 6)
+
+            if responsable == 1:
+                pass
+            if responsable == 2:
+                pass
+            if responsable == 3:
+                pass
+            if responsable == 4:
+                pass
+            if responsable == 5:
+                pass
+            if responsable == 6:
+                pass
+
+            break
     if menu == 3:
         pass
     if menu == 4:
