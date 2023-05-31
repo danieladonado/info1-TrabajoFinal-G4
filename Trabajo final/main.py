@@ -39,3 +39,15 @@ try:
 except Exception as e:
     print(e)
 
+menu = input("Ingrese una opción: ")
+menu = validacionNum(menu)
+menu =  rango1_a(menu,4)
+
+if menu == '1':
+  pass
+if menu == '2':
+  pass
+if menu == '3':
+  pass
+if menu == '4':
+  pass
