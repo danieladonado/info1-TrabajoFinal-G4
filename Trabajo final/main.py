@@ -154,6 +154,8 @@ while True:
                     continue
                 
             if equipo == 3:
+                """Sección ´para actualizar información guardada
+                """
                 numeroAc = input("Ingrese el número de activo a buscar: ")
                 numeroAc = validacionEnteros(numeroAc)
                 
@@ -161,6 +163,8 @@ while True:
                 print()    
                     
             if equipo == 4:
+                """Sección para buscar información de un equipo
+                """
                 numeroAc = input("Ingrese el número de activo a buscar: ")
                 numeroAc = validacionEnteros(numeroAc)
                 print()
