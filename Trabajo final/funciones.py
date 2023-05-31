@@ -82,7 +82,7 @@ def actualizarEquipo(numero_activo, coleccion):
         # Si el usuario ingresó un valor, actualizar el campo
         if nuevo_valor != "":
             if campo == 'numero de activo':
-                nuevo_valor == int(nuevo_valor)
+                nuevo_valor = int(nuevo_valor)
                 
             cambios[campo] = nuevo_valor
     
@@ -151,7 +151,7 @@ def actualizarResponsable(codigo_responsable, coleccion):
         # Si el usuario ingresó un valor, actualizar el campo
         if nuevo_valor != "":
             if campo == 'codigo de responsable':
-                nuevo_valor == int(nuevo_valor)
+                nuevo_valor = int(nuevo_valor)
                 
             cambios[campo] = nuevo_valor
     
@@ -219,12 +219,12 @@ def actualizarUbicacion(codigo_ubicacion, coleccion):
         # Si el usuario ingresó un valor, actualizar el campo
         if nuevo_valor != "":
             if campo == 'codigo de responsable':
-                nuevo_valor == int(nuevo_valor)
+                nuevo_valor = int(nuevo_valor)
                 
             cambios[campo] = nuevo_valor
     
     # Actualizar el documento con los cambios
-    coleccion.update_one({"codigo de responsable": codigo_responsable}, {"$set": cambios})
+    coleccion.update_one({"codigo de responsable": codigo_ubicacion}, {"$set": cambios})
     
     print("Documento actualizado correctamente")
 
