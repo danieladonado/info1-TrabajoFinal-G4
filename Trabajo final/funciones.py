@@ -80,7 +80,7 @@ def validacionCadenas(x):
                 x = input("El valor ingresado no es una cadena de letras. Ingrese de nuevo: ")
             except:
                 continue
-    return x
+    return str(x)
 
 
 
@@ -93,7 +93,7 @@ client = pymongo.MongoClient(uri)
 
 
 # Funciones CRUD para la colección "equipos"
-def crearEquipo(equipo):
+def crearEquipo(equipo, datEquipos):
     """
     Inserta un diccionario con la información de un equipo
     en la colección de la base de datos
@@ -101,10 +101,10 @@ def crearEquipo(equipo):
     Args:
         equipo (_type_): diccionario que representa un equipo
     """
-    client.equipos.insert_one(equipo)
+    x = datEquipos.insert_one(equipo)
 
 
-def leerEquipo(serial):
+def leerEquipo(serial,datEquipos):
     """
     la función busca el parámetro en la colección y
     lo retorna si es encontrado
@@ -115,7 +115,7 @@ def leerEquipo(serial):
     Returns:
         _type_: elemento buscado
     """
-    if client.equipos.find_one({'serial': serial}) is None:
+    if datEquipos.find_one({'serial': serial}) is None:
         print(f"No se encontró ningún equipo con el serial {serial}.")
     
     else:

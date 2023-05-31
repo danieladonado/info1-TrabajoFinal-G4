@@ -32,6 +32,13 @@ uri = "mongodb+srv://informatica1:bio123@cluster0.hj2pgzi.mongodb.net/?retryWrit
 # Crear cliente que se conecte al servidor
 client = pymongo.MongoClient(uri)
 
+
+db = client.test
+mydb = client["informatica1"]
+datEquipos = mydb["equiposData"]
+datRespon = mydb["responsablesData"]
+datRespon = mydb["ubicacionesData"]
+
 # Send a ping to confirm a successful connection
 try:
     client.admin.command("ping")
@@ -40,22 +47,59 @@ except Exception as e:
     print(e)
 
 while True:
+
+    
+ 
     menu = input(
     "\033[1;3;96m \nBienvenido al menú principal \033[0m\n\n 1. Menú de equipos.\n 2. Menú de responsables.\n 3. Menú de ubicaciones.\n 4. Salir.\n\nIngrese una opción: "
     )
     menu = validacionEnteros(menu)
-    menu = rango1_a(menu, 4)
+    menu = rango1_a(menu,4)
 
     if menu == 1:
+        """ 
+        Sección del menú para la colección de equipos 
+        """
         while True:
             equipo = input(
             "\n\nMenú de equipos\n\n 1. Ingresar equipo de forma manual.\n 2. Ingresar equipo de forma automática.\n 3. Actualizar equipo.\n 4. Buscar equipo.\n 5. Ver todos los equipos.\n 6. Eliminar equipo.\n 7. Volver al menú principal.\n\nIngrese una opción: "
             )
             equipo = validacionEnteros(equipo)
-            equipo = rango1_a(equipo, 7)
+            equipo = rango1_a(equipo,7)
 
             if equipo == 1:
-                pass
+                """ 
+                Sección de adición de un nuevo equipo a la base de datos
+                """
+                serialN = input("\nIngrese el número de serial: ")
+                serialN = validacionEnteros(serialN)
+                
+                activoN = input("\nIngrese el número de activo: ")
+                activoN =validacionEnteros(activoN)
+
+                nombreN = input("\nIngrese el nombre del equipo: ")
+                nombreN = validacionCadenas(nombreN)
+
+                marcaN = input("\nIngrese la marca del equipo: ")
+                marcaN = validacionCadenas(marcaN)
+
+                codeUbi = input("\nIngrese el código de ubicación: ")
+                codeUbi =validacionEnteros(codeUbi)
+
+                coderesp = input("\nIngrese el código de responsable: ")
+                coderesp = validacionEnteros(coderesp)
+
+                insertar={'serial':serialN,
+                                'numero de activo':activoN,
+                                'nombre':nombreN,
+                                'marca':marcaN,
+                                'codigo de ubicacion':codeUbi,
+                                'codigo de responsable':coderesp,
+                                }
+                
+                crearEquipo(insertar,datEquipos)
+                print("\nEquipo guardado adecuadamente\n")
+                             
             if equipo == 2:
                 pass
             if equipo == 3:
