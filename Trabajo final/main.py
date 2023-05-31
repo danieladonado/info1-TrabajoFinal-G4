@@ -34,20 +34,25 @@ client = pymongo.MongoClient(uri)
 
 # Send a ping to confirm a successful connection
 try:
-    client.admin.command('ping')
+    client.admin.command("ping")
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
     print(e)
 
-menu = input("Ingrese una opción: ")
-menu = validacionNum(menu)
-menu =  rango1_a(menu,4)
 
-if menu == '1':
-  pass
-if menu == '2':
-  pass
-if menu == '3':
-  pass
-if menu == '4':
-  pass
+while True:
+    menu = input(
+        "\nBienvenido al menú principal\n\n 1. Menú de equipos\n 2. Menú de responsables\n 3. Menú de ubicaciones\n 4. Salir \n\nIngrese una opción: "
+    )
+    menu = validacionEnteros(menu)
+    menu = rango1_a(menu, 4)
+
+    if menu == 1:
+        pass
+    if menu == 2:
+        pass
+    if menu == 3:
+        pass
+    if menu == 4:
+        print("\n\nPrograma finalizado exitosamente.")
+        break
