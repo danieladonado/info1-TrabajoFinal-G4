@@ -1,4 +1,4 @@
-"""integrantes:
+"""Integrantes:
 
 -Laura Acevedo González
 -Diego Alejandro Jaramillo Arroyave
@@ -39,10 +39,9 @@ try:
 except Exception as e:
     print(e)
 
-
 while True:
     menu = input(
-        "\nBienvenido al menú principal\n\n 1. Menú de equipos\n 2. Menú de responsables\n 3. Menú de ubicaciones\n 4. Salir \n\nIngrese una opción: "
+        "\033[1;3;96m \nBienvenido al menú principal \033[0m\n\n 1. Menú de equipos.\n 2. Menú de responsables.\n 3. Menú de ubicaciones.\n 4. Salir.\n\nIngrese una opción: "
     )
     menu = validacionEnteros(menu)
     menu = rango1_a(menu, 4)
