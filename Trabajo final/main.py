@@ -277,6 +277,29 @@ while True:
             ubicacion = rango1_a(ubicacion, 6)
 
             if ubicacion == 1:
+                """ 
+                Sección de adición de un nueva ubicación a la base de datos
+                """
+                codeUbi = input("\nIngrese el código de ubicación: ")
+                codeUbi = validacionEnteros(codeUbi)
+
+                nomUbi = input("Ingrese el nombre de la ubicación: ")
+                nomUbi = validacionCadenas(nomUbi)
+
+                piso = input("Ingrese el número de piso: ")
+                piso = validacionEnteros(piso)
+
+                telefono = input("Ingrese el teléfono del responsable: ")
+                telefono = validacionEnteros(telefono)
+
+                insertar = {'codigo de ubicacion':codeUbi,
+                                'nombre':nomUbi,
+                                'piso':piso,
+                                'telefono':telefono,
+                                }
+                
+                crear(insertar,datUbi)
+                print("\nUbicación guardada adecuadamente\n")
                 pass
             if ubicacion == 2:
                 """Sección para actualizar información guardada
