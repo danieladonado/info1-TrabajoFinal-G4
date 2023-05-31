@@ -5,13 +5,13 @@
 
 """
 import csv
-from funciones import validacionNum
-from funciones import validacionEnteros
-from funciones import rango1_a
-from funciones import validacionFlotantes
-from funciones import validacionCadenas
+from validaciones import validacionNum
+from validaciones import validacionEnteros
+from validaciones import rango1_a
+from validaciones import validacionFlotantes
+from validaciones import validacionCadenas
 
-from funciones import crearEquipo
+from funciones import crear
 from funciones import leerEquipo
 from funciones import actualizarEquipo
 from funciones import borrarEquipo
@@ -97,8 +97,9 @@ while True:
                                 'codigo de responsable':coderesp,
                                 }
                 
-                crearEquipo(insertar,datEquipos)
+                crear(insertar,datEquipos)
                 print("\nEquipo guardado adecuadamente\n")
+                continue
                              
             if equipo == 2:
                 """Sección de adición de equipo de forma automática
@@ -146,7 +147,7 @@ while True:
                                 'codigo de responsable':random_number3,
                                 }
                 
-                            crearEquipo(insertar,datEquipos)
+                            crear(insertar,datEquipos)
                             print("Ingreso automático exitoso.")
                             continue
                     
@@ -161,7 +162,13 @@ while True:
                 print()    
                     
             if equipo == 4:
-                pass
+                numeroAc = input("Ingrese el número de activo a buscar: ")
+                numeroAc = validacionEnteros(numeroAc)
+                print()
+                
+                leerEquipo(numeroAc,datEquipos)
+                continue
+                
             if equipo == 5:
                 pass
             if equipo == 6:
