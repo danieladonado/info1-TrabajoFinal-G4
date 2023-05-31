@@ -10,6 +10,7 @@ from validaciones import validacionEnteros
 from validaciones import rango1_a
 from validaciones import validacionFlotantes
 from validaciones import validacionCadenas
+from validaciones import validacionCadenas1
 
 from funciones import crear
 from funciones import leerEquipo
@@ -70,7 +71,7 @@ while True:
                 Sección de adición de un nuevo equipo a la base de datos
                 """
                 serialN = input("\nIngrese el número de serial: ")
-                serialN = validacionEnteros(serialN)
+                serialN = validacionCadenas1(serialN)
                 
                 activoN = input("\nIngrese el número de activo: ")
                 activoN =validacionEnteros(activoN)
@@ -79,7 +80,7 @@ while True:
                 nombreN = validacionCadenas(nombreN)
 
                 marcaN = input("\nIngrese la marca del equipo: ")
-                marcaN = validacionCadenas(marcaN)
+                marcaN = validacionCadenas1(marcaN)
 
                 codeUbi = input("\nIngrese el código de ubicación: ")
                 codeUbi =validacionEnteros(codeUbi)
@@ -267,10 +268,10 @@ while True:
                 
             if responsable == 6:
                 break
-
-
+        
+    if menu == 3:
         while True:
-            ubicación = input(
+            ubicacion = input(
             "\n\nMenú de ubicación\n\n 1. Ingresar ubicación.\n 2. Actualizar ubicación.\n 3. Buscar ubicación.\n 4. Ver todas las ubicaciones.\n 5. Eliminar ubicación.\n 6. Volver al menú principal.\n\nIngrese una opción: "
             )
             ubicacion = validacionEnteros(ubicacion)
@@ -284,7 +285,7 @@ while True:
                 codeUbi = validacionEnteros(codeUbi)
 
                 nomUbi = input("Ingrese el nombre de la ubicación: ")
-                nomUbi = validacionCadenas(nomUbi)
+                nomUbi = validacionCadenas1(nomUbi)
 
                 piso = input("Ingrese el número de piso: ")
                 piso = validacionEnteros(piso)
@@ -300,7 +301,8 @@ while True:
                 
                 crear(insertar,datUbi)
                 print("\nUbicación guardada adecuadamente\n")
-                pass
+                continue
+            
             if ubicacion == 2:
                 """Sección para actualizar información guardada
                 """

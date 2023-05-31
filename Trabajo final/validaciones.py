@@ -81,3 +81,13 @@ def validacionCadenas(x):
                 continue
     return str(x)
 
+def validacionCadenas1(x):
+  while True:
+    if x.replace(' ', '').isalnum():
+      break
+    else:
+      try:
+        x = input("El valor ingresado no es una cadena alfanumérica. Ingrese de nuevo: ")
+      except:
+          continue
+  return x
