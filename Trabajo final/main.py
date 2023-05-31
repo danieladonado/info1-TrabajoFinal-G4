@@ -231,9 +231,25 @@ while True:
                 continue
             
             if responsable == 2:
-                pass
+                """Sección para actualizar información guardada
+                """
+                code = input("Ingrese el codigo de responsable a buscar: ")
+                code = validacionEnteros(code)
+                
+                actualizarResponsable(code,datRespon)
+                print() 
+                continue  
+            
             if responsable == 3:
-                pass
+                """Sección para buscar información de un responsable
+                """
+                code = input("Ingrese el codigo de responsable a buscar: ")
+                code = validacionEnteros(code)
+                print()
+                
+                leerResponsable(code,datRespon)
+                continue
+            
             if responsable == 4:
                 print("\nLos responsables registrados son: \n\n")
                 imprimir_todos(datRespon)
@@ -263,9 +279,25 @@ while True:
             if ubicacion == 1:
                 pass
             if ubicacion == 2:
-                pass
+                """Sección para actualizar información guardada
+                """
+                code = input("Ingrese el codigo de ubicacion a buscar: ")
+                code = validacionEnteros(code)
+                
+                actualizarUbicacion(code,datUbi)
+                print() 
+                continue  
+            
             if ubicacion == 3:
-                pass
+                """Sección para buscar información 
+                """
+                code = input("Ingrese el codigo de ubicacion a buscar: ")
+                code = validacionEnteros(code)
+                print()
+                
+                leerUbicacion(code,datUbi)
+                continue
+            
             if ubicacion == 4:
                 print("\nLas ubicaciones registradas son: \n\n")
                 imprimir_todos(datUbi)
