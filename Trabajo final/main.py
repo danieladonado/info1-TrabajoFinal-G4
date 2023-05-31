@@ -15,11 +15,10 @@ from funciones import crear
 from funciones import leerEquipo
 from funciones import actualizarEquipo
 from funciones import borrarEquipo
-from funciones import crearResponsable
 from funciones import leerResponsable
 from funciones import actualizarResponsable
 from funciones import borrarResponsable
-from funciones import crearUbicacion
+from funciones import imprimir_todos
 from funciones import leerUbicacion
 from funciones import actualizarUbicacion
 from funciones import borrarUbicacion
@@ -154,13 +153,14 @@ while True:
                     continue
                 
             if equipo == 3:
-                """Sección ´para actualizar información guardada
+                """Sección para actualizar información guardada
                 """
                 numeroAc = input("Ingrese el número de activo a buscar: ")
                 numeroAc = validacionEnteros(numeroAc)
                 
                 actualizarEquipo(numeroAc,datEquipos)
-                print()    
+                print() 
+                continue  
                     
             if equipo == 4:
                 """Sección para buscar información de un equipo
@@ -173,9 +173,20 @@ while True:
                 continue
                 
             if equipo == 5:
-                pass
+                print("\nLos equipos registrados son: \n\n")
+                imprimir_todos(datEquipos)
+                print()
+                continue
+                
             if equipo == 6:
-                pass
+                """Sección para eliminar información de un equipo
+                """
+                numeroAc = input("Ingrese el número de activo a eliminar: ")
+                numeroAc = validacionEnteros(numeroAc)
+                print()
+                borrarEquipo(numeroAc,datEquipos)
+                continue   
+                
             if equipo == 7:
                 pass
 
@@ -215,21 +226,32 @@ while True:
                                 'cargo':cargo,
                                 }
                 
-                crearResponsable(insertar,datRespon)
+                crear(insertar,datRespon)
                 print("\nResponsable guardado adecuadamente\n")
-
+                continue
+            
             if responsable == 2:
                 pass
             if responsable == 3:
                 pass
             if responsable == 4:
-                pass
+                print("\nLos responsables registrados son: \n\n")
+                imprimir_todos(datRespon)
+                print()
+                continue
+        
             if responsable == 5:
-                pass
+                """Sección para eliminar información de un responsable
+                """
+                codigo = input("Ingrese el codigo de responsable a eliminar: ")
+                codigo = validacionEnteros(codigo)
+                print()
+                borrarResponsable(codigo,datRespon)
+                continue
+                
             if responsable == 6:
-                pass
+                break
 
-            break
 
         while True:
             ubicación = input(
@@ -245,9 +267,20 @@ while True:
             if ubicacion == 3:
                 pass
             if ubicacion == 4:
-                pass
+                print("\nLas ubicaciones registradas son: \n\n")
+                imprimir_todos(datUbi)
+                print()
+                continue
+            
             if ubicacion == 5:
-                pass
+                """Sección para eliminar información de un responsable
+                """
+                codigo = input("Ingrese el codigo de ubicacion a eliminar: ")
+                codigo = validacionEnteros(codigo)
+                print()
+                borrarUbicacion(codigo,datUbi)
+                continue
+            
             if ubicacion == 6:
                 pass
 
