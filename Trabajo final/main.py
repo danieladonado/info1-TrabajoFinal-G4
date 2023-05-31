@@ -47,8 +47,11 @@ except Exception as e:
 
 # Inicio código aplicación CRUD
 
-while True:
 
+## Ciclo principal
+while True:
+    #menu = variable para elegir a que menú se desea dirigir
+ 
     menu = input(
     "\033[1;3;96m \nBienvenido al menú principal \033[0m\n\n 1. Menú de equipos.\n 2. Menú de responsables.\n 3. Menú de ubicaciones.\n 4. Salir.\n\nIngrese una opción: "
     )
@@ -60,6 +63,7 @@ while True:
         Sección del menú para la colección de equipos 
         """
         while True:
+            #equipo = variable para elegir el proceso deseado en el menú de equipos
             equipo = input(
             "\n\nMenú de equipos\n\n 1. Ingresar equipo de forma manual.\n 2. Ingresar equipo de forma automática.\n 3. Actualizar equipo.\n 4. Buscar equipo.\n 5. Ver todos los equipos.\n 6. Eliminar equipo.\n 7. Volver al menú principal.\n\nIngrese una opción: "
             )
@@ -70,6 +74,8 @@ while True:
                 """ 
                 Sección de adición de un nuevo equipo a la base de datos
                 """
+                
+                #variables para ingresar a la base de datos
                 serialN = input("\nIngrese el número de serial: ")
                 serialN = validacionCadenas1(serialN)
                 
@@ -103,6 +109,8 @@ while True:
             if equipo == 2:
                 """Sección de adición de equipo de forma automática
                 """
+                
+                #confirmar = variable para asegurar el ingreso de información automática
                 confirmar = input("Ingrese '1' para confirmar el ingreso de información automática desde el archivo, o '2' para regresar al menú: ")
                 confirmar = validacionEnteros(confirmar)
                 confirmar = rango1_a(confirmar,2)
@@ -125,7 +133,7 @@ while True:
                             
                             # Hacer algo con los datos extraídos
                             
-                            #generar números aleatorios
+                            #"""En esta sección se generan números aleatorios para llenar los datos faltantes"""
                             import random
 
                             num_digits = 5
@@ -138,6 +146,7 @@ while True:
                             digits3 = [str(random.randint(0, 9)) for _ in range(num_digits)]
                             random_number3 = int(''.join(digits3))
                             
+                            #Sección para crear el diccionario
                             insertar = {'serial':serial,
                                 'numero de activo':random_number1,
                                 'nombre':name,
@@ -156,6 +165,7 @@ while True:
             if equipo == 3:
                 """Sección para actualizar información guardada
                 """
+                #numeroAc = variable para buscar en la base de datos
                 numeroAc = input("Ingrese el número de activo a buscar: ")
                 numeroAc = validacionEnteros(numeroAc)
                 
@@ -166,6 +176,7 @@ while True:
             if equipo == 4:
                 """Sección para buscar información de un equipo
                 """
+                #numeroAc = variable para buscar en la base de datos
                 numeroAc = input("Ingrese el número de activo a buscar: ")
                 numeroAc = validacionEnteros(numeroAc)
                 print()
@@ -174,6 +185,8 @@ while True:
                 continue
                 
             if equipo == 5:
+                """Sección para visualizar los elementos totales
+                """
                 print("\nLos equipos registrados son: \n\n")
                 imprimir_todos(datEquipos)
                 print()
@@ -182,6 +195,7 @@ while True:
             if equipo == 6:
                 """Sección para eliminar información de un equipo
                 """
+                #numeroAc = variable para buscar en la base de datos
                 numeroAc = input("Ingrese el número de activo a eliminar: ")
                 numeroAc = validacionEnteros(numeroAc)
                 print()
@@ -194,7 +208,10 @@ while True:
             break
 
     if menu == 2:
+        """Sección de opciones del menú de responsables
+        """
         while True:
+            #responsable = variable para elegir el proceso deseado en el menu de responsables
             responsable = input(
             "\n\nMenú de responsables\n\n 1. Ingresar responsable.\n 2. Actualizar responsable.\n 3. Buscar responsable.\n 4. Ver todos los responsables.\n 5. Eliminar responsable.\n 6. Volver al menú principal.\n\nIngrese una opción: "
             )
@@ -205,6 +222,7 @@ while True:
                 """ 
                 Sección de adición de un nuevo responsable a la base de datos
                 """
+                #variables para ingresar a la base de datos
                 coderesp = input("\nIngrese el código de responsable: ")
                 coderesp = validacionEnteros(coderesp)
 
@@ -234,6 +252,7 @@ while True:
             if responsable == 2:
                 """Sección para actualizar información guardada
                 """
+                # code=variable de búsqueda/auxiliar
                 code = input("Ingrese el codigo de responsable a buscar: ")
                 code = validacionEnteros(code)
                 
@@ -244,6 +263,7 @@ while True:
             if responsable == 3:
                 """Sección para buscar información de un responsable
                 """
+                # code=variable de búsqueda/auxiliar
                 code = input("Ingrese el codigo de responsable a buscar: ")
                 code = validacionEnteros(code)
                 print()
@@ -252,6 +272,9 @@ while True:
                 continue
             
             if responsable == 4:
+                """Sección para visualizar los elementos totales
+                """
+                
                 print("\nLos responsables registrados son: \n\n")
                 imprimir_todos(datRespon)
                 print()
@@ -260,6 +283,7 @@ while True:
             if responsable == 5:
                 """Sección para eliminar información de un responsable
                 """
+                # codigo = variable de búsqueda/auxiliar
                 codigo = input("Ingrese el codigo de responsable a eliminar: ")
                 codigo = validacionEnteros(codigo)
                 print()
@@ -270,7 +294,10 @@ while True:
                 break
         
     if menu == 3:
+        """Sección con el menú de ubicación
+        """
         while True:
+            #ubicacion = variable para elegir el proceso deseado en el menu de responsables
             ubicacion = input(
             "\n\nMenú de ubicación\n\n 1. Ingresar ubicación.\n 2. Actualizar ubicación.\n 3. Buscar ubicación.\n 4. Ver todas las ubicaciones.\n 5. Eliminar ubicación.\n 6. Volver al menú principal.\n\nIngrese una opción: "
             )
@@ -281,6 +308,7 @@ while True:
                 """ 
                 Sección de adición de un nueva ubicación a la base de datos
                 """
+                #variables que se ingresarán en la base de datos
                 codeUbi = input("\nIngrese el código de ubicación: ")
                 codeUbi = validacionEnteros(codeUbi)
 
@@ -306,6 +334,8 @@ while True:
             if ubicacion == 2:
                 """Sección para actualizar información guardada
                 """
+                # code = variable de búsqueda/auxiliar
+
                 code = input("Ingrese el codigo de ubicacion a buscar: ")
                 code = validacionEnteros(code)
                 
@@ -316,6 +346,7 @@ while True:
             if ubicacion == 3:
                 """Sección para buscar información 
                 """
+                 # code = variable de búsqueda/auxiliar
                 code = input("Ingrese el codigo de ubicacion a buscar: ")
                 code = validacionEnteros(code)
                 print()
@@ -324,6 +355,8 @@ while True:
                 continue
             
             if ubicacion == 4:
+                """Sección para visualizar los elementos totales
+                """
                 print("\nLas ubicaciones registradas son: \n\n")
                 imprimir_todos(datUbi)
                 print()
@@ -332,6 +365,7 @@ while True:
             if ubicacion == 5:
                 """Sección para eliminar información de un responsable
                 """
+                # codigo = variable de búsqueda/auxiliar
                 codigo = input("Ingrese el codigo de ubicacion a eliminar: ")
                 codigo = validacionEnteros(codigo)
                 print()

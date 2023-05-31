@@ -70,7 +70,9 @@ def validacionFlotantes(x):
     return x
 
 def validacionCadenas(x):
-    """Función que valida que un ingreso sea de tipo cadena de caracteres"""
+    """Función que valida que un ingreso sea de tipo cadena de caracteres
+    
+    """
     while True:
         if x.replace(' ', '').isalpha():
             break
@@ -82,12 +84,20 @@ def validacionCadenas(x):
     return str(x)
 
 def validacionCadenas1(x):
-  while True:
-    if x.replace(' ', '').isalnum():
-      break
-    else:
-      try:
-        x = input("El valor ingresado no es una cadena alfanumérica. Ingrese de nuevo: ")
-      except:
-          continue
-  return x
+    """La función valida si el parámetro es una cadena alfanumérica
+
+    Args:
+        x (_type_): valor a validar
+
+    Returns:
+        _type_: Retorna la cadena si está correcta
+    """
+    while True:
+        if x.replace(' ', '').isalnum():
+            break
+        else:
+            try:
+                x = input("El valor ingresado no es una cadena alfanumérica. Ingrese de nuevo: ")
+            except:
+                continue
+    return x
