@@ -37,7 +37,7 @@ def imprimir_todos(coleccion):
 # Funciones CRUD para la colección "equipos"
 
 
-def leerEquipo(numero_activo, coleccion):
+def leerEquipo(numero_activo, coleccion, coleccion2):
     """
     la función busca el parámetro en la colección y
     lo retorna si es encontrado
@@ -49,10 +49,24 @@ def leerEquipo(numero_activo, coleccion):
     if documento is None:
         print("No se encontró ningún documento con ese número de activo")
         return
-    
+
+    doc1 = coleccion.find_one()
+    doc2 = coleccion2.find_one()
+
     # Imprimir la información del documento
     for campo, valor in documento.items():
+        if campo == 'codigo de responsable' and coleccion2.count_documents({}) != 0 and doc1['codigo de responsable'] == doc2['codigo de responsable']:
+            code = valor
+            responsable = coleccion2.find_one({"codigo de responsable":code})
+            continue
+        
         print(f"{campo}: {valor}")
+        
+    if coleccion2.count_documents({}) != 0:
+        print("\nEncargado: ")
+        for campo, valor in responsable.items():
+            if campo =='nombre' or campo == 'apellido':
+                print(f"{campo}: {valor}")
 
 
 def actualizarEquipo(numero_activo, coleccion):

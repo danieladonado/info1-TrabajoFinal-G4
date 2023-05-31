@@ -181,7 +181,7 @@ while True:
                 numeroAc = validacionEnteros(numeroAc)
                 print()
                 
-                leerEquipo(numeroAc,datEquipos)
+                leerEquipo(numeroAc,datEquipos,datRespon)
                 continue
                 
             if equipo == 5:
