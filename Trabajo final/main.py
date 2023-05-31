@@ -41,13 +41,36 @@ except Exception as e:
 
 while True:
     menu = input(
-        "\033[1;3;96m \nBienvenido al menú principal \033[0m\n\n 1. Menú de equipos.\n 2. Menú de responsables.\n 3. Menú de ubicaciones.\n 4. Salir.\n\nIngrese una opción: "
+    "\033[1;3;96m \nBienvenido al menú principal \033[0m\n\n 1. Menú de equipos.\n 2. Menú de responsables.\n 3. Menú de ubicaciones.\n 4. Salir.\n\nIngrese una opción: "
     )
     menu = validacionEnteros(menu)
     menu = rango1_a(menu, 4)
 
     if menu == 1:
-        pass
+        while True:
+            equipo = input(
+            "\n\nMenú de equipos\n\n 1. Ingresar equipo de forma manual.\n 2. Ingresar equipo de forma automática.\n 3. Actualizar equipo.\n 4. Buscar equipo.\n 5. Ver todos los equipos.\n 6. Eliminar equipo.\n 7. Volver al menú principal.\n\nIngrese una opción: "
+            )
+            equipo = validacionEnteros(equipo)
+            equipo = rango1_a(equipo, 7)
+
+            if equipo == 1:
+                pass
+            if equipo == 2:
+                pass
+            if equipo == 3:
+                pass
+            if equipo == 4:
+                pass
+            if equipo == 5:
+                pass
+            if equipo == 6:
+                pass
+            if equipo == 7:
+                pass
+
+            break
+
     if menu == 2:
         pass
     if menu == 3:
