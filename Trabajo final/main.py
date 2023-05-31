@@ -32,7 +32,6 @@ uri = "mongodb+srv://informatica1:bio123@cluster0.hj2pgzi.mongodb.net/?retryWrit
 # Crear cliente que se conecte al servidor
 client = pymongo.MongoClient(uri)
 
-
 db = client.test
 mydb = client["informatica1"]
 datEquipos = mydb["equiposData"]
@@ -46,10 +45,10 @@ try:
 except Exception as e:
     print(e)
 
+# Inicio código aplicación CRUD
+
 while True:
 
-    
- 
     menu = input(
     "\033[1;3;96m \nBienvenido al menú principal \033[0m\n\n 1. Menú de equipos.\n 2. Menú de responsables.\n 3. Menú de ubicaciones.\n 4. Salir.\n\nIngrese una opción: "
     )
@@ -187,7 +186,34 @@ while True:
             responsable = rango1_a(responsable, 6)
 
             if responsable == 1:
-                pass
+                """ 
+                Sección de adición de un nuevo responsable a la base de datos
+                """
+                coderesp = input("\nIngrese el código de responsable: ")
+                coderesp = validacionEnteros(coderesp)
+
+                nom = input("Ingrese el nombre del responsable: ")
+                nom = validacionCadenas(nom)
+
+                prenom = input("Ingrese el apellido del responsable: ")
+                prenom = validacionCadenas(prenom)
+
+                id = input("Ingrese la identificación del responsable: ")
+                id = validacionEnteros(id)
+
+                cargo = input("Ingrese el cargo del responsable: ")
+                cargo = validacionCadenas(cargo)
+
+                insertar = {'codigo de responsable':coderesp,
+                                'nombre':nom,
+                                'apellido':prenom,
+                                'id':id,
+                                'cargo':cargo,
+                                }
+                
+                crearResponsable(insertar,datRespon)
+                print("\nResponsable guardado adecuadamente\n")
+
             if responsable == 2:
                 pass
             if responsable == 3:
@@ -203,7 +229,7 @@ while True:
 
         while True:
             ubicación = input(
-            "\n\nMenú de ubicación\n\n 1. Ingresar ubicación.\n 2. Actualizar ubicación.\n 3. Buscar ubicación.\n 4. Ver todas las ubicaciones..\n 5. Eliminar ubicación.\n 6. Volver al menú principal.\n\nIngrese una opción: "
+            "\n\nMenú de ubicación\n\n 1. Ingresar ubicación.\n 2. Actualizar ubicación.\n 3. Buscar ubicación.\n 4. Ver todas las ubicaciones.\n 5. Eliminar ubicación.\n 6. Volver al menú principal.\n\nIngrese una opción: "
             )
             ubicacion = validacionEnteros(ubicacion)
             ubicacion = rango1_a(ubicacion, 6)
