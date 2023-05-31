@@ -39,11 +39,3 @@ try:
 except Exception as e:
     print(e)
 
-
-db = client.test
-mydb = client["informatica1"]
-mycol = mydb["responsables"]
-
-mydict = {"Nombre":"Diego"}
-
-x = mycol.insert_one(mydict)
