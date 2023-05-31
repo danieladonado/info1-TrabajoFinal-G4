@@ -174,8 +174,29 @@ while True:
                 pass
 
             break
-    if menu == 3:
-        pass
+
+        while True:
+            ubicación = input(
+            "\n\nMenú de ubicación\n\n 1. Ingresar ubicación.\n 2. Actualizar ubicación.\n 3. Buscar ubicación.\n 4. Ver todas las ubicaciones..\n 5. Eliminar ubicación.\n 6. Volver al menú principal.\n\nIngrese una opción: "
+            )
+            ubicacion = validacionEnteros(ubicacion)
+            ubicacion = rango1_a(ubicacion, 7)
+
+            if ubicacion == 1:
+                pass
+            if ubicacion == 2:
+                pass
+            if ubicacion == 3:
+                pass
+            if ubicacion == 4:
+                pass
+            if ubicacion == 5:
+                pass
+            if ubicacion == 6:
+                pass
+
+            break
+        
     if menu == 4:
         print("\n\nPrograma finalizado exitosamente.")
         break
