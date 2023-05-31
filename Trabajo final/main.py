@@ -32,4 +32,18 @@ uri = "mongodb+srv://informatica1:bio123@cluster0.hj2pgzi.mongodb.net/?retryWrit
 # Crear cliente que se conecte al servidor
 client = pymongo.MongoClient(uri)
 
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 
+
+db = client.test
+mydb = client["informatica1"]
+mycol = mydb["responsables"]
+
+mydict = {"Nombre":"Diego"}
+
+x = mycol.insert_one(mydict)
