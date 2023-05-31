@@ -108,39 +108,71 @@ while True:
                 confirmar = rango1_a(confirmar,2)
                 
                 if confirmar == 1:
-                    with open("inventarioIPS.csv", newline="", encoding="utf-8") as csvfile:
+                    with open("Trabajo final\inventarioIPS.csv", newline="", encoding="utf-8") as csvfile:
                         reader = csv.reader(csvfile, delimiter=";")
                         # Obtener los nombres de las columnas de la primera fila
                         header = next(reader)
                         # Obtener los índices de las columnas específicas
                         name_index = header.index("NOMBRE")
                         marca_index = header.index("MARCA")
-                        ubicacion_index = header.index("SEDE")
                         serial_index = header.index("SERIE")
                         
                         for row in reader:
                             # Acceder a los datos de columnas específicas utilizando los índices
                             name = row[name_index]
                             brand = row[marca_index]
-                            location = row[ubicacion_index]
+                            serial = row[serial_index]
                             
                             # Hacer algo con los datos extraídos
                             
                             #generar números aleatorios
                             import random
-                            for i in range(3):
-                                num_digits = 5
-                                digits = [str(random.randint(0, 9)) for _ in range(num_digits)]
-                                random_number = int(''.join(digits))
 
+                            num_digits = 5
+                            digits1 = [str(random.randint(0, 9)) for _ in range(num_digits)]
+                            random_number1 = int(''.join(digits1))
+                            #
+                            digits2 = [str(random.randint(0, 9)) for _ in range(num_digits)]
+                            random_number2 = int(''.join(digits2))
+                            #
+                            digits3 = [str(random.randint(0, 9)) for _ in range(num_digits)]
+                            random_number3 = int(''.join(digits3))
                             
-                            print(f"Nombre: {name}, Marca: {brand}, Sede: {location}")
+                            insertar = {'serial':serial,
+                                'numero de activo':random_number1,
+                                'nombre':name,
+                                'marca':brand,
+                                'codigo de ubicacion':random_number2,
+                                'codigo de responsable':random_number3,
+                                }
+                
+                            crearEquipo(insertar,datEquipos)
+                            print("Ingreso automático exitoso.")
+                            continue
                     
                 elif confirmar ==2:
                     continue
                 
             if equipo == 3:
-                pass
+                """Sección que actualiza un equipo con base en su número activo
+                """
+                # El valor del campo "numero_activo" que estás buscando
+                numero_activo = input("Ingrese el valor del número activo a buscar: ")
+                
+                # Los cambios que deseas realizar en el documento
+                
+                cambios = {"$set": {"campo1": "nuevo_valor1", "campo2": "nuevo_valor2"}}
+
+                # Actualizar el documento
+                result = datEquipos.update_one({"numero_activo": numero_activo}, cambios)
+
+                # Verificar si se actualizó algún documento
+                if result.matched_count > 0:
+                    print(f"Se actualizó {result.modified_count} documento(s)")
+                else:
+                    print("No se encontró ningún documento con ese número activo")
+                    
+                    
             if equipo == 4:
                 pass
             if equipo == 5:
@@ -180,7 +212,7 @@ while True:
             "\n\nMenú de ubicación\n\n 1. Ingresar ubicación.\n 2. Actualizar ubicación.\n 3. Buscar ubicación.\n 4. Ver todas las ubicaciones..\n 5. Eliminar ubicación.\n 6. Volver al menú principal.\n\nIngrese una opción: "
             )
             ubicacion = validacionEnteros(ubicacion)
-            ubicacion = rango1_a(ubicacion, 7)
+            ubicacion = rango1_a(ubicacion, 6)
 
             if ubicacion == 1:
                 pass
